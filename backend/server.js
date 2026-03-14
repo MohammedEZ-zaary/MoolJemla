@@ -68,6 +68,8 @@ app.use('/api', orderRoutes);
 app.use('/api', productRoutes);
 app.use('/api/auth', authRoutes);
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+app.use(express.static(path.join(__dirname, '../frontend/dist')));
+
 // ADD THIS LINE: Make the tickets folder public too!
 app.use('/tickets', express.static(path.join(__dirname, 'tickets')));
 
@@ -89,7 +91,13 @@ app.post('/api/products', upload.single('productImage'), async (req, res) => {
         res.status(500).json({ error: error.message });
     }
 });
+// PRODUCTION
+// 1. Serve the static files from the Vue 'dist' directory
+console.log(path.join(__dirname, '../frontend/dist'));
 
+app.get(/.*/, (req, res) => {
+    res.sendFile(path.join(__dirname, '../frontend/dist/index.html'));
+});
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
     console.log(`🚀 MoolJemal backend running on http://localhost:${PORT}`);

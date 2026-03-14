@@ -3,7 +3,7 @@
     <div v-if="product" class="max-w-4xl mx-auto bg-white rounded-xl shadow-lg border-2 border-black overflow-hidden flex flex-col md:flex-row">
       
       <div class="md:w-1/2 border-r-2 border-black">
-        <img :src="`http://localhost:3000${product.imagePath}`" class="h-full w-full object-cover" alt="Product">
+        <img :src="`${product.imagePath}`" class="h-full w-full object-cover" alt="Product">
       </div>
       
       <div class="p-8 md:w-1/2 flex flex-col justify-between">
@@ -52,7 +52,7 @@
     <div v-if="product" class="max-w-5xl w-full mx-auto bg-white rounded-3xl shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] border-2 border-text_main overflow-hidden flex flex-col md:flex-row">
       
       <div class="md:w-1/2 border-b-2 md:border-b-0 md:border-l-2 border-text_main">
-        <img :src="`http://localhost:3000${product.imagePath}`" class="h-full w-full object-cover min-h-[300px]" alt="Product">
+        <img :src="`${product.imagePath}`" class="h-full w-full object-cover min-h-[300px]" alt="Product">
       </div>
       
       <div class="p-8 md:w-1/2 flex flex-col justify-between bg-white">
@@ -115,7 +115,7 @@ const orderQty = ref(1)
 
 const fetchProduct = async () => {
   try {
-    const res = await fetch(`http://localhost:3000/api/products/${route.params.id}`)
+    const res = await fetch(`/api/products/${route.params.id}`)
     product.value = await res.json()
   } catch (err) { console.error(err) }
 }

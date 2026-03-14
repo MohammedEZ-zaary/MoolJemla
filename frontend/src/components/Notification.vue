@@ -74,7 +74,7 @@ const checkNewOrders = async () => {
   if (!token) return
 
   try {
-    const res = await fetch('http://localhost:3000/api/orders', {
+    const res = await fetch('http:///api/orders', {
       headers: { 'Authorization': token }
     })
 
@@ -187,7 +187,7 @@ const checkNewOrders = async () => {
   try {
     // 💡 NOTE: Ensure this endpoint fetches ALL orders for the admin, 
     // not just the logged-in user's orders!
-    const res = await fetch('http://localhost:3000/api/admin/orders', {
+    const res = await fetch('/api/admin/orders', {
       headers: { 'Authorization': token }
     })
 

@@ -10,7 +10,7 @@
         @click="goToProduct(product._id)"
         class="cursor-pointer border rounded-xl overflow-hidden bg-white shadow-sm hover:shadow-md transition"
       >
-        <img :src="`http://localhost:3000${product.imagePath}`" class="h-56 w-full object-cover" />
+        <img :src="`${product.imagePath}`" class="h-56 w-full object-cover" />
         <div class="p-4">
           <h2 class="font-bold text-lg truncate">{{ product.title }}</h2>
           <p class="text-primary font-black text-xl">${{ product.price }}</p>
@@ -32,7 +32,7 @@
       </div>
 
       <div v-for="item in cart.items" :key="item._id" class="flex gap-4 mb-4 border-b pb-4">
-        <img :src="`http://localhost:3000${item.imagePath}`" class="w-16 h-16 object-cover rounded-lg" />
+        <img :src="`${item.imagePath}`" class="w-16 h-16 object-cover rounded-lg" />
         <div class="flex-1">
           <h4 class="font-bold text-sm leading-tight">{{ item.title }}</h4>
           <div class="flex items-center gap-2 mt-2">
@@ -74,7 +74,7 @@
         @click="goToProduct(product._id)"
         class="cursor-pointer bg-white border-2 border-text_main rounded-xl overflow-hidden shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-1 hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] transition-all duration-200 flex flex-col"
       >
-        <img :src="`http://localhost:3000${product.imagePath}`" class="h-56 w-full object-cover border-b-2 border-text_main" />
+        <img :src="`${product.imagePath}`" class="h-56 w-full object-cover border-b-2 border-text_main" />
         
         <div class="p-4 flex flex-col flex-1 justify-between">
           <div>
@@ -104,7 +104,7 @@
       </div>
 
       <div v-for="item in cart.items" :key="item._id" class="flex gap-4 mb-4 border-b-2 border-gray-100 pb-4">
-        <img :src="`http://localhost:3000${item.imagePath}`" class="w-20 h-20 object-cover rounded-xl border-2 border-text_main" />
+        <img :src="`${item.imagePath}`" class="w-20 h-20 object-cover rounded-xl border-2 border-text_main" />
         
         <div class="flex-1">
           <h4 class="font-black text-sm text-text_main leading-tight">{{ item.title }}</h4>
@@ -156,7 +156,7 @@ const goToProduct = (id) => {
   router.push({ name: 'product-detail', params: { id: id } })
 }
 onMounted(async () => {
-  const res = await fetch('http://localhost:3000/api/products')
+  const res = await fetch('/api/products')
   products.value = await res.json()
   console.log("Fetched products:", products.value) // DEBUG: Check if products are fetched correctly
 })
@@ -179,7 +179,7 @@ const submitOrder = async () => {
   };
 
   try {
-    const res = await fetch('http://localhost:3000/api/orders', {
+    const res = await fetch('/api/orders', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'Authorization': token },
       body: JSON.stringify(orderData)
