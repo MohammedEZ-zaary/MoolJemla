@@ -103,7 +103,7 @@ const fetchProfile = async () => {
   const token = localStorage.getItem('token');
   
   try {
-    const res = await fetch('http://localhost:3000/api/auth/profile', {
+    const res = await fetch('/api/auth/profile', {
       method: 'GET',
       headers: {
         'Authorization': token // Send the JWT token

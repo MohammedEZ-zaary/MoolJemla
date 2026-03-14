@@ -24,7 +24,7 @@
             >
               <div class="flex items-center gap-4">
                 <img 
-                  :src="`http://localhost:3000${item.productId?.imagePath}`" 
+                  :src="`${item.productId?.imagePath}`" 
                   class="w-14 h-14 object-cover rounded-xl border-2 border-gray-50" 
                 />
                 <div>
@@ -92,7 +92,7 @@
             >
               <div class="flex items-center gap-4">
                 <img 
-                  :src="`http://localhost:3000${item.productId?.imagePath}`" 
+                  :src="`${item.productId?.imagePath}`" 
                   class="w-16 h-16 object-cover rounded-xl border-2 border-text_main" 
                 />
                 <div>
@@ -137,7 +137,7 @@ const orders = ref([])
 
 const fetchOrders = async () => {
   const token = localStorage.getItem('token')
-  const res = await fetch('http://localhost:3000/api/user-orders', {
+  const res = await fetch('/api/user-orders', {
     headers: { 'Authorization': token }
   })
   orders.value = await res.json()

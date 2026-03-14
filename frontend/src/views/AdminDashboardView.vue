@@ -116,7 +116,7 @@
                 <td class="p-4 text-center">
                   <a 
                     v-if="order.status === 'confirmed'" 
-                    :href="`http://localhost:3000/tickets/Ticket_${order._id}.pdf`" 
+                    :href="`/tickets/Ticket_${order._id}.pdf`" 
                     target="_blank"
                     class="inline-flex items-center text-secondary hover:text-green-700 font-bold bg-green-50 px-3 py-1 rounded border border-green-200 transition"
                   >
@@ -290,7 +290,7 @@
                 <td class="p-4 text-center">
                   <a 
                     v-if="order.status === 'confirmed'" 
-                    :href="`http://localhost:3000/tickets/Ticket_${order._id}.pdf`" 
+                    :href="`/tickets/Ticket_${order._id}.pdf`" 
                     target="_blank"
                     class="inline-flex items-center text-secondary hover:text-green-700 font-black bg-secondary/10 px-4 py-2 rounded-lg border-2 border-secondary transition hover:-translate-y-0.5"
                   >
@@ -368,7 +368,7 @@ const fetchOrders = async () => {
   if (!token) return
 
   try {
-    const res = await fetch('http://localhost:3000/api/orders', {
+    const res = await fetch('/api/orders', {
       headers: { 'Authorization': token }
     })
     if (res.ok) {
@@ -385,7 +385,7 @@ const updateOrderStatus = async (orderId, newStatus) => {
   
   try {
     // This sends the new status to the backend route we just upgraded
-    const res = await fetch(`http://localhost:3000/api/admin/orders/${orderId}/status`, {
+    const res = await fetch(`/api/admin/orders/${orderId}/status`, {
       method: 'PUT',
       headers: { 
         'Content-Type': 'application/json',
@@ -435,7 +435,7 @@ const submitProduct = async () => {
   formData.append('image', selectedFile.value)
 
   try {
-    const res = await fetch('http://localhost:3000/api/products/add', {
+    const res = await fetch('/api/products/add', {
       method: 'POST',
       headers: { 'Authorization': token },
       body: formData
@@ -462,7 +462,7 @@ const submitProduct = async () => {
 const downloadTicket = async (orderId) => {
   const token = localStorage.getItem('token')
   try {
-    const res = await fetch(`http://localhost:3000/api/orders/${orderId}/ticket`, {
+    const res = await fetch(`/api/orders/${orderId}/ticket`, {
       method: 'GET',
       headers: { 'Authorization': token }
     })

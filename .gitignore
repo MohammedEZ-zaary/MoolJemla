@@ -3,3 +3,6 @@
 /backend/uploads
 /frontend/build
 /backend/.env
+/backend/tickets
+/forntend/dist
+/fontend/package-lock.json
