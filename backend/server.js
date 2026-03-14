@@ -5,6 +5,10 @@ const path = require('path');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const config = require('./config.json');
+require('dotenv').config();
+//VARIABLES 
+const MONGO_URI = process.env.MONGO_URI;
+const JWT_SECRET = process.env.JWT_SECRET;
 
 // 1. Import Routes FIRST
 const orderRoutes = require('./routes/orders');
@@ -26,7 +30,7 @@ app.use((req, res, next) => {
   next();
 });
 // 3. MONGODB CONNECTION
-mongoose.connect('mongodb://127.0.0.1:27017/MoolJemal')
+mongoose.connect(MONGO_URI)
   .then(() => console.log('✅ Connected to local MongoDB (MoolJemal)'))
   .catch((err) => console.error('❌ MongoDB Connection Error:', err));
 

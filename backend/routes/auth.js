@@ -1,4 +1,5 @@
 const express = require('express');
+require('dotenv').config();
 const router = express.Router();
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
@@ -7,7 +8,7 @@ const auth = require('../middleware/auth');
 
 
 // SECRET KEY - In a real app, put this in a .env file
-const JWT_SECRET = "mooljemal_super_secret_key_2026";
+const JWT_SECRET = process.env.JWT_SECRET;
 
 // ==========================================
 // SIGN UP ROUTE (Register)
