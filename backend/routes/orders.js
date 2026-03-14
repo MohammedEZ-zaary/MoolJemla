@@ -203,7 +203,7 @@ router.put('/admin/orders/:orderId/status', auth, async (req, res) => {
         doc.font('ArabicFont').fontSize(11)
            .text(ar(  `${custName} الزبون: `), { align: 'right' })
            .text(ar(`${new Date().toLocaleDateString('fr-FR')} التاريخ: `), { align: 'right' })
-           .text(ar(` ${order._id.toString().slice(-6)} الطلب رقم :`), { align: 'right' })
+           .text(ar(` #${order._id.toString().slice(-6)} الطلب رقم :`), { align: 'right' })
            .text(ar(` ${admin.firstName} ${admin.lastName} البائع: `), { align: 'right' })
            .moveDown(1);
 
