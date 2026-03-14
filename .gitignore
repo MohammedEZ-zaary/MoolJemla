@@ -6,3 +6,4 @@
 /backend/tickets
 /forntend/dist
 /fontend/package-lock.json
+**/package-lock.json
