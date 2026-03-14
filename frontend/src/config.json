@@ -1,0 +1,13 @@
+{
+  "APP_NAME": "MoolJemal",
+  "IMAGES_PRODUCT_PATH": "./uploads/products/",
+  "IMAGES_PROFILE_PATH": "./uploads/profiles/",
+  "COLORS": {
+    "primary": "#2563EB", 
+    "secondary": "#22C55E", 
+    "background": "#FFFFFF", 
+    "text_main": "#000000", 
+    "danger": "#FF3333", 
+    "warning": "#FFCC00" 
+  }
+}

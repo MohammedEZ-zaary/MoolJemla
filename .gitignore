@@ -1,0 +1,5 @@
+/backend/node_modules
+/forntend/node_modules
+/backend/uploads
+/frontend/build
+.env
